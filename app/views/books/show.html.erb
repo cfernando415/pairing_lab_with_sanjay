@@ -7,7 +7,8 @@
   </li>
   <% end %>
 </ul>
-<%= form_for @book.book_authors do |f| %>
+<%= form_for @bookauthor do |f| %>
+<input type="hidden" id=:book_id name="book_author[:book_id]" value=<%=@book.id%> />
 <%= f.label :book_author, "Author" %>
 <%= f.collection_select :id, @authors, :id, :name %>
 <%= f.submit "Add author"%>

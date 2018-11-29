@@ -27,7 +27,6 @@ class BooksController < ApplicationController
   end
 
   def update
-    byebug
     @book.update(book_params)
     if @book.save
       redirect_to @book
