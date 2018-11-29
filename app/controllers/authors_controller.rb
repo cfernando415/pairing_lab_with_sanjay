@@ -24,10 +24,16 @@ class AuthorsController < ApplicationController
 
   end
   def update
-
+    @author.update(authors_params)
+    if @author.save
+      redirect_to @author
+    else
+      render 'edit'
+    end
   end
   def destroy
-
+    @author.destroy
+    redirect_to authors_path
   end
   private
   def find_author
