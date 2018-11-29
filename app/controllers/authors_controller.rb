@@ -5,9 +5,16 @@ class AuthorsController < ApplicationController
 
   end
   def new
+    @author = Author.new
 
   end
   def create
+    @author = Author.new(authors_params)
+    if @author.save
+      redirect_to @author
+    else
+      render 'new'
+    end
 
   end
   def show
@@ -25,5 +32,8 @@ class AuthorsController < ApplicationController
   private
   def find_author
     @author = Author.find(params[:id])
+  end
+  def authors_params
+    params.require(:author).permit(:name, :birth_year)
   end
 end
